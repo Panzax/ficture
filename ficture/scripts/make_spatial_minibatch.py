@@ -172,3 +172,17 @@ def make_spatial_minibatch(_args):
 
 if __name__ == "__main__":
     make_spatial_minibatch(sys.argv[1:])
+    # Default run with sys.argv
+    if len(sys.argv) > 1:
+        make_spatial_minibatch(sys.argv[1:])
+    # Test run with specific arguments
+    else:
+        test_args = [
+            "--input", f"{os.environ['HOME']}/experiments/data/Xenium IPF 225721/filtered.matrix.tsv.gz",
+            "--output", f"{os.environ['HOME']}/experiments/data/Xenium IPF 225721/batched.matrix.tsv.gz",
+            "--mu_scale", "1",
+            "--batch_size", "500",
+            "--batch_buff", "30",
+            "--major_axis", "Y"
+        ]
+        make_spatial_minibatch(test_args)
